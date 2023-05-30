@@ -1,0 +1,4 @@
+djangorestframework==3.11.2
+django-cors-headers==3.10.0
+requests==2.22.0
+Pillow
