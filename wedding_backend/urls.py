@@ -14,11 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.views.generic import TemplateView
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
-    path('', TemplateView.as_view(template_name='index.html')),
+    path('', TemplateView.as_view(template_name='dist/index.html')),
+    re_path('^toan-ngoc/', TemplateView.as_view(template_name='dist/index.html')),
+    re_path('^ngoc-toan/', TemplateView.as_view(template_name='dist/index.html')),
+    re_path('^my-login/', TemplateView.as_view(template_name='dist/index.html')),
+    re_path('^my-admin/', TemplateView.as_view(template_name='dist/index.html')),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
